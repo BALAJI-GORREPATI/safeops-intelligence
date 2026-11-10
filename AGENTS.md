@@ -1,0 +1,2 @@
+# SafeOps development
+Use the requested Next.js / FastAPI / PostgreSQL stack. Preserve immutable event history and isolate ground truth from operational detection. Do not overwrite manual data during generation. Run meaningful backend, frontend and database checks before claiming completion. Maintain PROGRESS.md with actual results and outstanding work. Local demonstration authentication is not production identity management.

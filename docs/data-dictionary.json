@@ -1,0 +1,2365 @@
+{
+  "schema_version": "0001",
+  "tables": {
+    "application_users": {
+      "fields": [
+        {
+          "name": "name",
+          "type": "VARCHAR(120)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "role IN ('operator','engineer','planner','admin')"
+          ],
+          "description": "Name"
+        },
+        {
+          "name": "role",
+          "type": "VARCHAR(20)",
+          "required": true,
+          "allowed_values": [
+            "role IN ('operator','engineer','planner','admin')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "role IN ('operator','engineer','planner','admin')"
+          ],
+          "description": "Role"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "role IN ('operator','engineer','planner','admin')"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "role IN ('operator','engineer','planner','admin')"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "role IN ('operator','engineer','planner','admin')"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "dataset_generation_runs": {
+      "fields": [
+        {
+          "name": "id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Id"
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(20)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Status"
+        },
+        {
+          "name": "progress",
+          "type": "INTEGER",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "0",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Progress"
+        },
+        {
+          "name": "config",
+          "type": "JSON",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Config"
+        },
+        {
+          "name": "counts",
+          "type": "JSON",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Counts"
+        },
+        {
+          "name": "checksum",
+          "type": "VARCHAR(64)",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Checksum"
+        },
+        {
+          "name": "error",
+          "type": "TEXT",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Error"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Created at"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "ground_truth": {
+      "fields": [
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Id"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Workspace id"
+        },
+        {
+          "name": "target_entity",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Target entity"
+        },
+        {
+          "name": "target_record_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Target record id"
+        },
+        {
+          "name": "anomaly_type",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Anomaly type"
+        },
+        {
+          "name": "expected_decision",
+          "type": "BOOLEAN",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "True",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Expected decision"
+        },
+        {
+          "name": "rule_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Rule id"
+        },
+        {
+          "name": "explanation",
+          "type": "TEXT",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Explanation"
+        },
+        {
+          "name": "related_record_ids",
+          "type": "JSON",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Related record ids"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "plants": {
+      "fields": [
+        {
+          "name": "name",
+          "type": "VARCHAR(120)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Name"
+        },
+        {
+          "name": "location",
+          "type": "VARCHAR(120)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Location"
+        },
+        {
+          "name": "timezone",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "Asia/Kolkata",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Timezone"
+        },
+        {
+          "name": "active",
+          "type": "BOOLEAN",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "True",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Active"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": [
+        [
+          "workspace_id",
+          "name"
+        ]
+      ]
+    },
+    "audit_events": {
+      "fields": [
+        {
+          "name": "entity",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Entity"
+        },
+        {
+          "name": "record_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Record id"
+        },
+        {
+          "name": "user_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [],
+          "description": "User id"
+        },
+        {
+          "name": "operation",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Operation"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Occurred at"
+        },
+        {
+          "name": "evidence",
+          "type": "JSON",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Evidence"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "machines": {
+      "fields": [
+        {
+          "name": "plant_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "plants.id"
+          ],
+          "validation": [],
+          "description": "Plant id"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(120)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Name"
+        },
+        {
+          "name": "kind",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Kind"
+        },
+        {
+          "name": "active",
+          "type": "BOOLEAN",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "True",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Active"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": [
+        [
+          "plant_id",
+          "name"
+        ]
+      ]
+    },
+    "operator_shifts": {
+      "fields": [
+        {
+          "name": "plant_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "plants.id"
+          ],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "Plant id"
+        },
+        {
+          "name": "user_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "User id"
+        },
+        {
+          "name": "starts_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [
+            "ends_at > starts_at"
+          ],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "Starts at"
+        },
+        {
+          "name": "ends_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [
+            "ends_at > starts_at"
+          ],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "Ends at"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ends_at > starts_at"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "safety_zones": {
+      "fields": [
+        {
+          "name": "plant_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "plants.id"
+          ],
+          "validation": [],
+          "description": "Plant id"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(120)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Name"
+        },
+        {
+          "name": "restriction",
+          "type": "VARCHAR(240)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "Guard must be closed during operation",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Restriction"
+        },
+        {
+          "name": "effective_from",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Effective from"
+        },
+        {
+          "name": "effective_to",
+          "type": "DATETIME",
+          "required": false,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Effective to"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "validation_results": {
+      "fields": [
+        {
+          "name": "id",
+          "type": "VARCHAR(100)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Id"
+        },
+        {
+          "name": "run_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "dataset_generation_runs.id"
+          ],
+          "validation": [],
+          "description": "Run id"
+        },
+        {
+          "name": "report",
+          "type": "JSON",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Report"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Created at"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "alarm_definitions": {
+      "fields": [
+        {
+          "name": "machine_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machines.id"
+          ],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Machine id"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Name"
+        },
+        {
+          "name": "severity",
+          "type": "VARCHAR(16)",
+          "required": true,
+          "allowed_values": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Severity"
+        },
+        {
+          "name": "source",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "PLC",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Source"
+        },
+        {
+          "name": "ack_deadline_seconds",
+          "type": "INTEGER",
+          "required": true,
+          "allowed_values": [
+            "ack_deadline_seconds > 0"
+          ],
+          "units": "seconds",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Project demo response deadline in seconds"
+        },
+        {
+          "name": "effective_from",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Effective from"
+        },
+        {
+          "name": "effective_to",
+          "type": "DATETIME",
+          "required": false,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Effective to"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "ack_deadline_seconds > 0",
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "incidents": {
+      "fields": [
+        {
+          "name": "machine_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machines.id"
+          ],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Machine id"
+        },
+        {
+          "name": "title",
+          "type": "VARCHAR(240)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Title"
+        },
+        {
+          "name": "severity",
+          "type": "VARCHAR(16)",
+          "required": true,
+          "allowed_values": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Severity"
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(24)",
+          "required": true,
+          "allowed_values": [
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "units": null,
+          "default": "OPEN",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Status"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Occurred at"
+        },
+        {
+          "name": "rule_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Rule id"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "severity IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','INVESTIGATING','ACTION_PENDING','RESOLVED','CLOSED')"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "interlocks": {
+      "fields": [
+        {
+          "name": "machine_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machines.id"
+          ],
+          "validation": [],
+          "description": "Machine id"
+        },
+        {
+          "name": "zone_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "safety_zones.id"
+          ],
+          "validation": [],
+          "description": "Zone id"
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR(120)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Name"
+        },
+        {
+          "name": "mandatory",
+          "type": "BOOLEAN",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": "True",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Mandatory"
+        },
+        {
+          "name": "effective_from",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Effective from"
+        },
+        {
+          "name": "effective_to",
+          "type": "DATETIME",
+          "required": false,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Effective to"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "machine_safety_zones": {
+      "fields": [
+        {
+          "name": "machine_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machines.id"
+          ],
+          "validation": [],
+          "description": "Machine id"
+        },
+        {
+          "name": "zone_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "safety_zones.id"
+          ],
+          "validation": [],
+          "description": "Zone id"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": [
+        [
+          "machine_id",
+          "zone_id"
+        ]
+      ]
+    },
+    "machine_state_events": {
+      "fields": [
+        {
+          "name": "machine_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machines.id"
+          ],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "Machine id"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR(20)",
+          "required": true,
+          "allowed_values": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "State"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "Occurred at"
+        },
+        {
+          "name": "reason",
+          "type": "VARCHAR(240)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "Reason"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('RUNNING','STOPPED','MAINTENANCE','FAULT')"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "alarm_events": {
+      "fields": [
+        {
+          "name": "machine_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machines.id"
+          ],
+          "validation": [],
+          "description": "Machine id"
+        },
+        {
+          "name": "definition_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "alarm_definitions.id"
+          ],
+          "validation": [],
+          "description": "Definition id"
+        },
+        {
+          "name": "machine_state_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machine_state_events.id"
+          ],
+          "validation": [],
+          "description": "Machine state id"
+        },
+        {
+          "name": "shift_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "operator_shifts.id"
+          ],
+          "validation": [],
+          "description": "Shift id"
+        },
+        {
+          "name": "source_event_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Physical source identity; repeats indicate replay"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Occurred at"
+        },
+        {
+          "name": "message",
+          "type": "VARCHAR(240)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Message"
+        },
+        {
+          "name": "value",
+          "type": "FLOAT",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Sensor reading, degrees C for temperature definitions"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "corrective_actions": {
+      "fields": [
+        {
+          "name": "incident_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "incidents.id"
+          ],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Incident id"
+        },
+        {
+          "name": "assignee_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Assignee id"
+        },
+        {
+          "name": "priority",
+          "type": "VARCHAR(16)",
+          "required": true,
+          "allowed_values": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Priority"
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Description"
+        },
+        {
+          "name": "due_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Due at"
+        },
+        {
+          "name": "status",
+          "type": "VARCHAR(20)",
+          "required": true,
+          "allowed_values": [
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "units": null,
+          "default": "OPEN",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Status"
+        },
+        {
+          "name": "completed_at",
+          "type": "DATETIME",
+          "required": false,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Completed at"
+        },
+        {
+          "name": "verified_at",
+          "type": "DATETIME",
+          "required": false,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Verified at"
+        },
+        {
+          "name": "verified_by",
+          "type": "VARCHAR(160)",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Verified by"
+        },
+        {
+          "name": "verification_evidence",
+          "type": "TEXT",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Verification evidence"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "priority IN ('LOW','MEDIUM','HIGH','CRITICAL')",
+            "status IN ('OPEN','IN_PROGRESS','COMPLETED','VERIFIED','CLOSED')"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "incident_status_history": {
+      "fields": [
+        {
+          "name": "incident_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "incidents.id"
+          ],
+          "validation": [],
+          "description": "Incident id"
+        },
+        {
+          "name": "from_status",
+          "type": "VARCHAR(24)",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "From status"
+        },
+        {
+          "name": "to_status",
+          "type": "VARCHAR(24)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "To status"
+        },
+        {
+          "name": "user_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [],
+          "description": "User id"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Occurred at"
+        },
+        {
+          "name": "note",
+          "type": "TEXT",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Note"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "interlock_state_events": {
+      "fields": [
+        {
+          "name": "interlock_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "interlocks.id"
+          ],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "Interlock id"
+        },
+        {
+          "name": "machine_state_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "machine_state_events.id"
+          ],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "Machine state id"
+        },
+        {
+          "name": "state",
+          "type": "VARCHAR(20)",
+          "required": true,
+          "allowed_values": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "State"
+        },
+        {
+          "name": "guard_state",
+          "type": "VARCHAR(12)",
+          "required": true,
+          "allowed_values": [
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "Guard state"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "Occurred at"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [
+            "state IN ('ENGAGED','RELEASED','BYPASSED','FAILED')",
+            "guard_state IN ('OPEN','CLOSED')"
+          ],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "acknowledgements": {
+      "fields": [
+        {
+          "name": "alarm_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [
+            "alarm_events.id"
+          ],
+          "validation": [],
+          "description": "Alarm id"
+        },
+        {
+          "name": "user_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [],
+          "description": "User id"
+        },
+        {
+          "name": "acknowledged_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Acknowledged at"
+        },
+        {
+          "name": "note",
+          "type": "TEXT",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Note"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "corrective_action_status_history": {
+      "fields": [
+        {
+          "name": "action_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "corrective_actions.id"
+          ],
+          "validation": [],
+          "description": "Action id"
+        },
+        {
+          "name": "from_status",
+          "type": "VARCHAR(24)",
+          "required": false,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "From status"
+        },
+        {
+          "name": "to_status",
+          "type": "VARCHAR(24)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "To status"
+        },
+        {
+          "name": "user_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "application_users.id"
+          ],
+          "validation": [],
+          "description": "User id"
+        },
+        {
+          "name": "occurred_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Occurred at"
+        },
+        {
+          "name": "note",
+          "type": "TEXT",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Note"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": []
+    },
+    "incident_alarms": {
+      "fields": [
+        {
+          "name": "incident_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "incidents.id"
+          ],
+          "validation": [],
+          "description": "Incident id"
+        },
+        {
+          "name": "alarm_id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [
+            "alarm_events.id"
+          ],
+          "validation": [],
+          "description": "Alarm id"
+        },
+        {
+          "name": "id",
+          "type": "VARCHAR(160)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": true,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Immutable canonical identifier"
+        },
+        {
+          "name": "workspace_id",
+          "type": "VARCHAR(80)",
+          "required": true,
+          "allowed_values": [],
+          "units": null,
+          "default": null,
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "Dataset run identifier or manual"
+        },
+        {
+          "name": "created_at",
+          "type": "DATETIME",
+          "required": true,
+          "allowed_values": [],
+          "units": "UTC",
+          "default": "UTC now",
+          "unique": false,
+          "foreign_key": [],
+          "validation": [],
+          "description": "UTC record ingestion time"
+        }
+      ],
+      "unique_constraints": [
+        [
+          "incident_id",
+          "alarm_id"
+        ]
+      ]
+    }
+  }
+}

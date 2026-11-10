@@ -1,0 +1,87 @@
+{
+  "starter": {
+    "workspace": "sim-834b667e35",
+    "stored_counts": {
+      "acknowledgements": 684,
+      "alarm_definitions": 24,
+      "alarm_events": 800,
+      "application_users": 4,
+      "corrective_action_status_history": 59,
+      "corrective_actions": 30,
+      "ground_truth": 5,
+      "incident_alarms": 30,
+      "incident_status_history": 66,
+      "incidents": 31,
+      "interlock_state_events": 168,
+      "interlocks": 8,
+      "machine_safety_zones": 8,
+      "machine_state_events": 168,
+      "machines": 8,
+      "operator_shifts": 42,
+      "plants": 2,
+      "safety_zones": 8
+    },
+    "physical_alarms": 799,
+    "dashboard_seconds": 0.0523,
+    "alarm_page_seconds": 0.6965,
+    "dashboard_response_bytes": 6407,
+    "alarm_page_response_bytes": 15488,
+    "validation_counts": {
+      "PASS": 21016,
+      "EXPECTED_ANOMALY": 6,
+      "UNEXPECTED_FAILURE": 0
+    },
+    "evaluation": {
+      "tp": 5,
+      "fp": 0,
+      "tn": 1711,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "full": {
+    "workspace": "sim-cb80b0c36d",
+    "stored_counts": {
+      "acknowledgements": 42814,
+      "alarm_definitions": 200,
+      "alarm_events": 50000,
+      "application_users": 4,
+      "corrective_action_status_history": 4000,
+      "corrective_actions": 2001,
+      "ground_truth": 250,
+      "incident_alarms": 2001,
+      "incident_status_history": 4488,
+      "incidents": 2051,
+      "interlock_state_events": 5400,
+      "interlocks": 60,
+      "machine_safety_zones": 60,
+      "machine_state_events": 5400,
+      "machines": 60,
+      "operator_shifts": 360,
+      "plants": 4,
+      "safety_zones": 60
+    },
+    "physical_alarms": 49950,
+    "dashboard_seconds": 0.6974,
+    "alarm_page_seconds": 0.0505,
+    "dashboard_response_bytes": 8126,
+    "alarm_page_response_bytes": 15500,
+    "validation_counts": {
+      "PASS": 1186550,
+      "EXPECTED_ANOMALY": 288,
+      "UNEXPECTED_FAILURE": 0
+    },
+    "evaluation": {
+      "tp": 250,
+      "fp": 0,
+      "tn": 102016,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    }
+  },
+  "verified_at": "2026-11-10T10:34:12.612973+00:00"
+}

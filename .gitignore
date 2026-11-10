@@ -1,0 +1,15 @@
+.venv/
+node_modules/
+.next/
+.env
+*.pyc
+__pycache__/
+.pytest_cache/
+.runtime/
+exports/*
+!exports/.gitkeep
+frontend/playwright-report/
+frontend/test-results/
+*.tsbuildinfo
+.pytest_tmp/
+.pytest_cache_tmp/

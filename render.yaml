@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: safeops-backend
+    runtime: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python -m uvicorn safeops.api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: PYTHONPATH
+        value: backend
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DEMO_PASSWORD
+        value: SafeOps-local-demo
+      - key: CORS_ORIGIN
+        sync: false
+

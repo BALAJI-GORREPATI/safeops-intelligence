@@ -4,6 +4,86 @@ A locally runnable industrial safety application connecting machine states, prot
 
 **Stack:** Next.js App Router, TypeScript, Tailwind CSS, Lucide and Recharts; Python FastAPI/Pydantic; SQLAlchemy/Alembic; PostgreSQL; seeded NumPy generation. Six primary views: Overview, Machines, Alarms, Incidents, Corrective actions, Data & validation. No Docker or cloud account required.
 
+## Repository and Project Structure
+
+```
+safeops-intelligence/
+├── backend/                             # FastAPI application & safety analytics engine
+│   ├── safeops/                         # Core Python package
+│   │   ├── api.py                       # FastAPI application, route handlers & endpoints
+│   │   ├── artifacts.py                 # Export bundle packager (ZIP, CSV, JSON, SQL)
+│   │   ├── auth.py                      # Session cookies, role-based RBAC & demo auth
+│   │   ├── cli.py                       # SafeOps CLI (seed, generate, validate, evaluate)
+│   │   ├── db.py                        # Database session management & engine setup
+│   │   ├── generator.py                 # Synthetic dataset generator & deterministic seeding
+│   │   ├── models.py                    # SQLAlchemy ORM models & immutable constraints
+│   │   ├── rules.py                     # Industrial safety business rules & anomaly engine
+│   │   ├── schemas.py                   # Pydantic request/response validation schemas
+│   │   ├── services.py                  # Domain service layer & query orchestration
+│   │   └── validation.py                # Ground truth evaluation & data integrity auditing
+│   ├── tests/                           # Backend test suite (pytest)
+│   │   ├── test_api.py                  # API endpoints, authentication & RBAC tests
+│   │   ├── test_generator.py            # Dataset generation, rules & anomalies test
+│   │   └── test_sql_export.py           # SQL round-trip & integrity tests
+│   ├── requirements.txt                 # Backend Python package dependencies
+│   └── requirements.lock.txt            # Locked Python dependencies
+├── database/                            # Database migrations (Alembic)
+│   ├── env.py                           # Alembic environment runner
+│   └── versions/                        # Migration scripts
+│       └── 0001_schema.py               # Initial PostgreSQL schema definition & indexes
+├── frontend/                            # Next.js App Router frontend application
+│   ├── app/                             # Next.js pages, layouts & routing
+│   │   ├── layout.tsx                   # Root HTML layout & fonts
+│   │   ├── page.tsx                     # Main dashboard page
+│   │   ├── [section]/page.tsx           # Dynamic section router (machines, alarms, etc.)
+│   │   ├── data-page.tsx                # Admin-only Data & Validation interface
+│   │   ├── ui.tsx                       # Reusable UI components, modals, filters & tables
+│   │   ├── workspace.tsx                # Workspace context, role selector & state
+│   │   ├── resources.tsx                # API fetch helpers & state hooks
+│   │   ├── browser-reload-boundary.tsx  # F5 browser reload handler
+│   │   └── globals.css                  # Tailwind styles & theme variables
+│   ├── tests/                           # End-to-end browser tests (Playwright)
+│   │   ├── browser-navigation.spec.ts   # Navigation & reload tests
+│   │   └── workflows.spec.ts            # Role workflows, acknowledgments & actions
+│   ├── next.config.ts                   # Next.js config with dynamic backend proxy
+│   ├── package.json                     # Frontend npm scripts & dependencies
+│   ├── playwright.config.ts             # Playwright test configuration
+│   ├── postcss.config.mjs               # PostCSS configuration
+│   ├── tsconfig.json                    # TypeScript compiler options
+│   └── AGENTS.md                        # Frontend design & safety workflow rules
+├── docs/                                # Technical specifications & architecture guides
+│   ├── api.md                           # REST API specifications & endpoint reference
+│   ├── architecture.md                  # System architecture & Entity-Relationship diagram
+│   ├── browser-reload-behavior.md       # Session preservation & navigation spec
+│   ├── business-rules.md                # Safety rules, metric definitions & formulas
+│   ├── data-dictionary.md               # Human-readable database schema dictionary
+│   ├── data-dictionary.json             # Machine-readable schema dictionary
+│   ├── database-verification.json       # Database integrity audit evidence
+│   ├── generation-and-evaluation.md     # Synthetic generator & ground-truth evaluation
+│   ├── refresh-and-origin-cleanup.md    # UI cleanup guidelines
+│   ├── reproducibility-results.json     # Reproducibility checksum audit evidence
+│   ├── ui-cleanup.md                    # Access control & role visibility guide
+│   └── verification.md                  # Comprehensive verification report
+├── exports/                             # Seeded dataset exports & evaluation reports
+│   ├── starter/                         # Starter dataset (seed 20261022, 5 edge cases)
+│   │   ├── csv/                         # Normalized CSV tables
+│   │   ├── json/                        # JSON structured tables
+│   │   ├── sql/                         # Schema & seed SQL scripts
+│   │   └── evaluation/                  # Detection results & ground truth records
+│   └── full/                            # Full 50k-event dataset exports
+├── scripts/                             # Development, operations & verification scripts
+│   ├── Start-SafeOps.ps1                # One-click startup script for local environment
+│   ├── Stop-SafeOps.ps1                 # Clean shutdown script
+│   ├── bootstrap_db.py                  # Local PostgreSQL cluster bootstrapper
+│   ├── verify_artifacts.py              # Export bundle reproducibility checker
+│   └── verify_database.py               # Comprehensive database integrity verifier
+├── alembic.ini                          # Alembic database migration config
+├── netlify.toml                         # Netlify frontend deployment configuration
+├── render.yaml                          # Render backend deployment configuration
+├── PROGRESS.md                          # Project progress & verification history
+└── README.md                            # Main project overview & instructions
+```
+
 ## Run the installed application in this workspace
 
 Dependencies, workspace-local PostgreSQL, migrations, starter and full datasets have been installed/generated here. From PowerShell in the project root:

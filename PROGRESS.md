@@ -48,6 +48,16 @@
 
 ## Browser reload reset (supersedes manual Refresh controls)
 - Removed manual controls, icons, handlers, success cards and animations on all pages/details. Renamed the shared helper to resources.tsx; retained automatic post-save invalidation and generation polling.
+
+## GitHub Publishing and Production Deployment
+- Published complete, clean codebase to public GitHub repository `https://github.com/BALAJI-GORREPATI/safeops-intelligence`.
+- Verified all credentials, local databases (`.runtime/`), local `.env` files, and temporary caches remain strictly excluded via `.gitignore`.
+- Added comprehensive repository and project structure tree diagram to `README.md` and pushed commit `2acdd1a` to `main`.
+- Connected and verified hosted Supabase PostgreSQL instance (Session mode, port 5432, `ap-northeast-1`).
+- Applied full Alembic schema migrations (`0001_schema.py`) to Supabase.
+- Seeded fresh starter synthetic dataset (fixed seed `20261022`) with all 5 mandatory industrial safety edge cases (100% precision, recall, F1, 0 unexpected failures) on the Supabase database.
+- Awaiting Render backend web service URL and Netlify deployment.
+
 - Shared Workspace boundary identifies genuine document reloads and resets only the persisted temporary dataset selection. Authenticated reloads go to `/` with original defaults, while session cookies, roles and unrelated storage remain intact.
 - Normal sidebar and direct-link navigation are unaffected; server `/data` authorization and backend role checks are unchanged.
 - Backend tests: 22 passed. TypeScript and ESLint passed without warnings; production build passed. All 23 browser workflows passed in development and production (40.9 seconds), including genuine reload classification, no writes during reload, unrelated-storage preservation and all four roles.
